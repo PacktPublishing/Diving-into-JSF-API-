@@ -1,0 +1,16 @@
+/* 
+    Document   : player
+    Created on : Dec 11, 2013, 2:33:39 AM
+    Author     : Leonard
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.rafa-style {     
+    border : 1px solid  #FF9933;
+    font-family : verdana;
+    font-size : 14px;
+    font-weight:normal;
+    color: #000000;
+    background-color:#fae6b0;     
+}
