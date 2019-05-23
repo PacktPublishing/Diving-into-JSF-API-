@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>AJAX</title>
+        <script type="text/javascript">
+            function ajaxMonitoring(data) {
+                document.getElementById("statusId").innerHTML += data.status + " | ";
+                if(data.status === "serverError" || data.status === "malformedXML" || data.status === "httpError" || data.status === "emptyResponse"){
+                    document.getElementById("descriptionId").innerHTML += data.description;
+                    document.getElementById("errorNameId").innerHTML += data.errorName;
+                    document.getElementById("errorMessageId").innerHTML += data.errorMessage;
+                }
+                document.getElementById("responseCodeId").innerHTML += status.responseCode + "| ";
+                if (data.status === "complete") {
+                    document.getElementById("typeId").innerHTML += data.type;
+                    document.getElementById("sourceId").innerHTML += data.source + "<br/><xmp>" + new XMLSerializer().serializeToString(data.source) + "</xmp>";
+                    document.getElementById("responseXMLId").innerHTML += data.responseXML + "<br/><xmp>" + new XMLSerializer().serializeToString(data.responseXML) + "</xmp>";
+                    document.getElementById("responseTextId").innerHTML += "<xmp>" + data.responseText + "</xmp>";
+                }
+            }
+        </script>
+    </h:head>
+    <h:body> 
+      <strong>Application name: c3_s5_v5.6_1</strong>
+      <hr/>The onerror attribute<hr/>      
+        <hr/>       
+        <h:form>                      
+            <h:message id="msgId" showDetail="true" showSummary="true" for="nameId" style="color: red;"/>
+            <hr/>
+            <h:inputText id="nameId" value="#{ajaxBean.name}" validator="nameValidator"/>
+            <h:commandButton value="Submit">
+                <f:ajax onevent ="ajaxMonitoring" onerror="ajaxMonitoring" execute="@form" 
+                        listener="#{ajaxBean.unexistedMethod()}" render="@form"/>
+            </h:commandButton>           
+        </h:form>  
+        <hr/>
+        <div id="statusId">AJAX STATUS:</div>
+        <div id="typeId">AJAX TYPE:</div>
+        <div id="responseCodeId">AJAX RESPONSE CODE:</div>
+        <div id="sourceId">AJAX SOURCE:</div>
+        <div id="responseXMLId">AJAX RESPONSE XML:</div>
+        <div id="responseTextId">AJAX RESPONSE TEXT:</div>
+        <hr/>
+        <div id="descriptionId">ERROR DESCRIPTION:</div>
+        <div id="errorNameId">ERROR NAME:</div>
+        <div id="errorMessageId">ERROR MESSAGE:</div>        
+        <hr/>
+    </h:body>
+</html>
+

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Upload files in JSF</title>
+    </h:head>
+    <h:body>       
+       <strong>Application name: c3_s7_v7.2_1</strong>
+       <hr/>Single file upload<hr/> 
+        
+       <h:messages globalOnly="true" showDetail="false" showSummary="true" style="color:red"/>
+        <h:form id="uploadFormId" enctype="multipart/form-data">
+            <h:inputFile id="fileToUpload" required="true" requiredMessage="No file selected ..." value="#{uploadBean.file}"/>                       
+            <h:commandButton value="Upload" action="#{uploadBean.upload()}"/>             
+            <h:message showDetail="false" showSummary="true" for="fileToUpload" style="color:red"/>
+        </h:form>
+    </h:body>
+</html>
+

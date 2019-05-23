@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+    <head jsf:id="head">
+        <title>JSF and HTML 5 adoption</title>
+    </head>
+    <body jsf:id="body">
+        <strong>Application name: c3_s6_v6.2_1</strong>
+        <hr/>Pass-through elements<hr/> 
+      
+        <form jsf:id="form">
+            Name:<input type="text" jsf:value="#{playersBean.playerName}"/>
+            Surname:<input type="text" jsf:value="#{playersBean.playerSurname}"/>
+            <button jsf:action="#{playersBean.playerAction()}">Show</button>
+        </form>
+    </body>
+</html>
+

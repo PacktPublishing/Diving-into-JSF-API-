@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>AJAX</title>
+    </h:head>
+    <h:body>     
+      <strong>Application name: c3_s5_v5.7_1</strong>
+      <hr/>Queue control for AJAX requests<hr/>      
+      
+        <hr/>
+        No delay (default):
+        <hr/>
+        <b>Type a tennis player name:</b><br/>
+        'Nadal Rafael', 'Federer Roger', 'Ferer David', 'Murray Andy',<br/> 
+        'Djokovic Novak', 'Berdych Tomas', 'Haas Tommy', 'Isner John',<br/>
+        'Fognini Fabio', 'Robredo Tommy'
+        <h:form>                      
+            <h:inputText id="name300Id" value="#{ajaxBean.piece}">
+                <f:ajax event="keyup" execute="@this" listener="#{ajaxBean.populatePlayerBox()}" 
+                        render=":suggestion300Id"/>
+            </h:inputText>
+        </h:form>  
+        <h:outputText id="suggestion300Id" value="#{ajaxBean.piece}"/>
+        <hr/>
+        <hr/>
+        Explicit delay (1000 miliseconds or 1 second):
+        <hr/>
+        <b>Type a tennis player name:</b><br/>
+        'Nadal Rafael', 'Federer Roger', 'Ferer David', 'Murray Andy',<br/> 
+        'Djokovic Novak', 'Berdych Tomas', 'Haas Tommy', 'Isner John',<br/> 
+        'Fognini Fabio', 'Robredo Tommy'
+        <h:form>                      
+            <h:inputText id="name1000Id" value="#{ajaxBean.piece}">
+                <f:ajax event="keyup" delay="1000" execute="@this" listener="#{ajaxBean.populatePlayerBox()}" 
+                        render=":suggestion1000Id"/>
+            </h:inputText>
+        </h:form>  
+        <h:outputText id="suggestion1000Id" value="#{ajaxBean.piece}"/>
+        <hr/>
+    </h:body>
+</html>
+

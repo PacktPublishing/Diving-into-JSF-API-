@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>AJAX</title>
+    </h:head>
+    <h:body> 
+        <strong>Application name: c3_s5_v5.2_1</strong>
+        <hr/>The execute and render attributes<hr/>
+        
+        <hr/>
+        AJAX - @form
+        <hr/>
+        <h:form>
+            Name: <h:inputText value="#{ajaxBean.name}"/>
+            Surname: <h:inputText value="#{ajaxBean.surname}"/>
+            Phone: <h:inputText value="#{ajaxBean.phone}"/>
+            Age: <h:inputText value="#{ajaxBean.age}"/>
+            Address: <h:inputText value="#{ajaxBean.address}"/>
+            <h:commandButton value="Say Hello" action="#{ajaxBean.ajaxAction()}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            <hr/>
+            <h:panelGrid columns="6">
+                <h:outputText style="font-weight: bold;" value="@form"/>
+                <h:outputText value="Name: #{ajaxBean.name}"/>
+                <h:outputText value="Surname: #{ajaxBean.surname}"/>
+                <h:outputText value="Phone: #{ajaxBean.phone}"/>
+                <h:outputText value="Age: #{ajaxBean.age}"/>
+                <h:outputText value="Address: #{ajaxBean.address}"/>
+            </h:panelGrid>
+        </h:form>   
+        
+        <hr/>
+        AJAX - @none
+        <hr/>
+        <h:form>
+            Name: <h:inputText value="#{ajaxBean.name}"/>
+            Surname: <h:inputText value="#{ajaxBean.surname}"/>
+            Phone: <h:inputText value="#{ajaxBean.phone}"/>
+            Age: <h:inputText value="#{ajaxBean.age}"/>
+            Address: <h:inputText value="#{ajaxBean.address}"/>
+            <h:commandButton value="Say Hello" action="#{ajaxBean.ajaxAction()}">
+                <f:ajax execute="@none" render="@form"/>
+            </h:commandButton>
+            <hr/>
+            <h:panelGrid columns="6">
+                <h:outputText style="font-weight: bold;" value="@none"/>
+                <h:outputText value="Name: #{ajaxBean.name}"/>
+                <h:outputText value="Surname: #{ajaxBean.surname}"/>
+                <h:outputText value="Phone: #{ajaxBean.phone}"/>
+                <h:outputText value="Age: #{ajaxBean.age}"/>
+                <h:outputText value="Address: #{ajaxBean.address}"/>
+            </h:panelGrid>
+        </h:form>  
+        
+        <hr/>
+        AJAX - @this
+        <hr/>
+         <h:form>
+            Name: <h:inputText value="#{ajaxBean.name}"/>
+            Surname: <h:inputText value="#{ajaxBean.surname}"/>
+            Phone: <h:inputText value="#{ajaxBean.phone}"/>
+            Age: <h:inputText value="#{ajaxBean.age}"/>
+            Address: <h:inputText value="#{ajaxBean.address}"/>
+            <h:commandButton value="Say Hello" action="#{ajaxBean.ajaxAction()}">
+                <f:ajax execute="@this" render="@form"/>
+            </h:commandButton>
+            <hr/>
+            <h:panelGrid columns="6">
+                <h:outputText style="font-weight: bold;" value="@this"/>
+                <h:outputText value="Name: #{ajaxBean.name}"/>
+                <h:outputText value="Surname: #{ajaxBean.surname}"/>
+                <h:outputText value="Phone: #{ajaxBean.phone}"/>
+                <h:outputText value="Age: #{ajaxBean.age}"/>
+                <h:outputText value="Address: #{ajaxBean.address}"/>
+            </h:panelGrid>
+        </h:form>
+        
+        <hr/>
+        AJAX - identifiers
+        <hr/>
+         <h:form>
+            Name: <h:inputText id="nameInputId" value="#{ajaxBean.name}"/>
+            Surname: <h:inputText value="#{ajaxBean.surname}"/>
+            Phone: <h:inputText id="phoneInputId" value="#{ajaxBean.phone}"/>
+            Age: <h:inputText value="#{ajaxBean.age}"/>
+            Address: <h:inputText id="addressInputId" value="#{ajaxBean.address}"/>
+            <h:commandButton value="Say Hello" action="#{ajaxBean.ajaxAction()}">
+                <f:ajax execute="nameInputId phoneInputId addressInputId" render="nameOutputId phoneOutputId ageOutputId"/>
+            </h:commandButton>
+            <hr/>
+            <h:panelGrid columns="6">
+                <h:outputText style="font-weight: bold;" value="identifiers"/>
+                <h:outputText id="nameOutputId" value="Name: #{ajaxBean.name}"/>
+                <h:outputText value="Surname: #{ajaxBean.surname}"/>
+                <h:outputText id="phoneOutputId" value="Phone: #{ajaxBean.phone}"/>
+                <h:outputText id="ageOutputId" value="Age: #{ajaxBean.age}"/>
+                <h:outputText id="addressOutputId" value="Address: #{ajaxBean.address}"/>
+            </h:panelGrid>
+        </h:form>
+        
+        <hr/>
+        AJAX - @all
+        <hr/>
+        <h:form>
+            Name: <h:inputText value="#{ajaxBean.name}"/>
+            Surname: <h:inputText value="#{ajaxBean.surname}"/>
+            Phone: <h:inputText value="#{ajaxBean.phone}"/>
+            Age: <h:inputText value="#{ajaxBean.age}"/>
+            Address: <h:inputText value="#{ajaxBean.address}"/>
+            <h:commandButton value="Say Hello" action="#{ajaxBean.ajaxAction()}">
+                <f:ajax execute="@all" render="@all"/>
+            </h:commandButton>
+            <hr/>
+            <h:panelGrid columns="6">
+                <h:outputText style="font-weight: bold;" value="@all"/>
+                <h:outputText value="Name: #{ajaxBean.name}"/>
+                <h:outputText value="Surname: #{ajaxBean.surname}"/>
+                <h:outputText value="Phone: #{ajaxBean.phone}"/>
+                <h:outputText value="Age: #{ajaxBean.age}"/>
+                <h:outputText value="Address: #{ajaxBean.address}"/>
+            </h:panelGrid>
+        </h:form>         
+    </h:body>
+</html>
+

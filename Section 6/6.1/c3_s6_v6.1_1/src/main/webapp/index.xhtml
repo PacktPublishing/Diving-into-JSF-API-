@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f5="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>JSF and HTML 5 adoption</title>
+    </h:head>
+    <h:body>     
+      <strong>Application name: c3_s6_v6.1_1</strong>
+      <hr/>Pass-through attributes<hr/>      
+      
+        Example 1 (using f5:type and f5:placeholder):
+        <h:form>
+            <h:inputText value="#{playersBean.email}" f5:type="email" f5:placeholder="Enter player e-mail"/>            
+        </h:form>
+        <br/>
+        Example 2 (using f:passThroughAttribute):
+        <h:form>
+            <h:inputText value="#{playersBean.email}">
+                <f:passThroughAttribute name="placeholder" value="Enter player e-mail" />
+                <f:passThroughAttribute name="type" value="email" />
+            </h:inputText>
+        </h:form>
+        <br/>
+        Example 3 (using f:passThroughAttributes):
+        <h:form>
+            <h:inputText value="#{playersBean.email}">
+                <f:passThroughAttributes value="#{playersBean.attrs}" />
+            </h:inputText>
+        </h:form>
+        <br/>
+        Example 4 (using f:passThroughAttributes and EL 3):
+        <h:form>            
+            <h:inputText value="#{playersBean.email}">
+                <f:passThroughAttributes value='#{{"placeholder":"Enter player e-mail", "type":"email"}}' />
+            </h:inputText>  
+        </h:form>
+        <br/>
+        Example 5 (custom attributes):
+        <h:form>
+            <h:inputText value="rafa@yahoo.com" f5:player-nickname="Rafa" f5:player-mother-name="Ana Maria Parera" f5:player-father-name="Sebastián Nadal"/>
+        </h:form>
+    </h:body>
+</html>
+
