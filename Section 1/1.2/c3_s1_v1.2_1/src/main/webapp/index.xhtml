@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Diving into JSF API</title>
+    </h:head>
+    <h:body>
+        <strong>Application name: c3_s1_v1.2_1</strong>
+        <hr/>Action listeners<hr/>
+
+        <!-- Using actionListener attribute -->
+        <p>Using <code>actionListener</code> attribute ...</p>
+        <h:form>           
+            <h:commandButton value="Foo Listener" 
+                             actionListener="#{fooBean.actionListenerMethod}" 
+                             action="#{fooBean.actionMethod()}"/>
+        </h:form>
+        <hr/>
+
+        <!-- Using f:actionListener and the binding attribute -->
+        <p>Using <code>&lt;f:actionListener/&gt;</code> and <code>binding</code> attribute ...</p>
+        <h:form>           
+            <h:commandButton value="Foo Listener" action="#{fooBean.actionMethod()}">
+                <f:actionListener binding="#{fooBean.actionListenerMethod()}" />
+            </h:commandButton>
+        </h:form>
+        <hr/>
+
+        <!-- Using f:actionListener and the type attribute -->
+        <p>Using <code>&lt;f:actionListener/&gt;</code> and <code>type</code> attribute ...</p>
+        <h:panelGrid columns="2">
+            <h:form>
+                <h:commandButton value="Foo Listener" action="#{fooBean.actionMethod()}">
+                    <f:actionListener type="listeners.FooListener"/>
+                </h:commandButton>    
+            </h:form>
+            <h:form>
+                <h:commandButton value="Foo Listener (wrapper)" action="#{fooBean.actionMethod()}">
+                    <f:actionListener type="listeners.FooListenerWrapper"/>
+                </h:commandButton>    
+            </h:form>
+        </h:panelGrid>
+        <hr/>
+
+        <!-- Using f:setPropertyActionListener -->
+        <p>Using <code>&lt;f:setPropertyActionListener/&gt;</code> ...</p>
+        <h:form>
+            <h:commandButton value="Foo listener" action="#{fooBean.actionMethod()}">
+                <f:setPropertyActionListener value="foo" target="#{fooBean.foo}"/>
+            </h:commandButton>
+        </h:form>
+        <hr/>
+
+        <!-- Using f:ajax and listener -->
+        <p>Using <code>&lt;f:ajax/&gt;</code> and <code>listener</code> ...</p>
+        <h:form>
+            <h:commandButton value="Foo listener" action="#{fooBean.actionMethod()}">
+                <f:ajax listener="#{fooBean.ajaxActionListenerMethod}" />
+            </h:commandButton>
+        </h:form>
+        <hr/>
+
+        <!-- Using all explicit action listeners -->
+        <p>Using all explicit action listeners ...</p>
+        <h:form>
+            <h:commandButton value="Foo Listener" 
+                             actionListener="#{fooBean.actionListenerMethod}" 
+                             action="#{fooBean.actionMethod()}">
+                <f:actionListener type="listeners.FooListenerWrapper"/>
+                <f:actionListener binding="#{fooBean.actionListenerMethod()}" />                               
+                <f:actionListener type="listeners.FooListener"/>                                
+                <f:ajax listener="#{fooBean.ajaxActionListenerMethod}" />                
+                <f:setPropertyActionListener value="foo" target="#{fooBean.foo}"/>
+            </h:commandButton>    
+        </h:form>      
+        <hr/>
+
+        <!-- No explicit action listener -->
+        <p>No explicit action listener ...</p>
+        <h:form>
+            <h:commandButton value="Foo Listener" action="#{fooBean.actionMethod()}" />            
+        </h:form>   
+    </h:body>
+</html>
+

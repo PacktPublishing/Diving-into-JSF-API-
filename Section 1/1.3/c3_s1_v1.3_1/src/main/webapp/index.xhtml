@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <strong>Application name: c3_s1_v1.3_1</strong>
+        <hr/>System/component event listeners<hr/>
+        
+        <h4>Use <code>PostValidateEvent</code> to validate multiple components</h4>
+        <h:form id="registerForm">            
+            <f:event listener="#{playerBean.validateAccount}" type="postValidate" />
+            <h:panelGrid id="pgId" columns="3">
+                <h:outputLabel for="nameId" value="Player name : " />
+                <h:inputText id="nameId" value="#{playerBean.name}" required="true" />
+                <h:message for="nameId" style="color: red;" />
+                <h:outputLabel for="surnameId" value="Player surname : " />
+                <h:inputText id="surnameId" value="#{playerBean.surname}" required="true" />
+                <h:message for="surnameId" style="color: red;" />
+                <h:outputLabel for="bankAccountId" value="Bank account : " />
+                <h:inputText id="bankAccountId" value="#{playerBean.bank}" required="true" />
+                <h:message for="bankAccountId" style="color: red;" />
+                <h:outputLabel for="confirmBankAccountId" value="Confirm bank account : " />
+                <h:inputText id="confirmBankAccountId" value="#{playerBean.cbank}" required="true" />
+                <h:message for="confirmBankAccountId" style="color: red;" />
+            </h:panelGrid>
+            <h:commandButton action="done" value="Send" />
+        </h:form>
+    </h:body>
+</html>
+
